@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Muchas gracias por tu compra!</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* VARIABLES CSS (--nombre):
+          Centralizamos los colores del diseño. Si en el futuro quieres cambiar el color café por un azul, 
+          basta con modificar el código hexadecimal aquí arriba y se cambiará automáticamente en toda la página.
+        */
+        :root {
+            --bg-color: #fcf8f2;        /* Fondo general: un tono crema/arena muy suave que simula una cafetería */
+            --card-bg: #ffffff;         /* Fondo de la tarjeta central: blanco puro para resaltar el contenido */
+            --primary-color: #6f4e37;   /* Color principal: café oscuro para textos importantes y branding */
+            --accent-color: #d4a373;    /* Color de acento: café claro para el nombre de la cafetería y detalles */
+            --text-main: #333333;       /* Texto oscuro principal para máxima legibilidad */
+            --text-muted: #666666;      /* Texto secundario atenuado para descripciones o detalles menos relevantes */
+        }
+
+        /* RESETEO BÁSICO CSS (*):
+          Le quita los márgenes y rellenos que los navegadores (como Chrome o Safari) ponen por defecto, 
+          asegurando que la página se vea exactamente igual en cualquier dispositivo.
+        */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ESTILOS DEL CUERPO (body):
+          Hacemos que ocupe todo el alto de la pantalla (min-height: 100vh) y centramos la tarjeta 
+          envolvente perfectamente tanto de forma horizontal como vertical usando Flexbox.
+        */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* TARJETA CONTENEDORA (.container):
+          Es el cuadro blanco. Tiene 'max-width: 500px' para que en computadoras o tabletas no se estire 
+          de forma fea y se mantenga elegante, mientras que en celulares ocupa el 100% del ancho disponible.
+        */
+        .container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 500px; 
+            padding: 40px 30px;
+            border-radius: 24px; /* Bordes redondeados para un aspecto moderno y amigable */
+            box-shadow: 0 10px 30px rgba(111, 78, 55, 0.08); /* Sombra suave de color café */
+            text-align: center;
+            animation: fadeIn 0.6s ease-out; /* Animación de entrada al cargar la página */
+        }
+
+        /* CONTENEDOR DEL ICONO: Aplica la animación de flotación al emoji de la taza */
+        .icon-container {
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite; 
+        }
+
+        /* ESTILO DEL NOMBRE DE LA CAFETERÍA: Texto en mayúsculas y espaciado para un toque de marca elegante */
+        .cafe-name {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* TÍTULO PRINCIPAL: El mensaje de agradecimiento grande y llamativo */
+        h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        /* MENSAJE DE AGRADECIMIENTO: Texto secundario con buena separación de línea (line-height) para lectura cómoda */
+        .thanks-message {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        /* SECCIÓN DE CONTACTO: Línea discontinua que separa visualmente el agradecimiento del botón */
+        .contact-section {
+            border-top: 2px dashed #f0e6df;
+            padding-top: 30px;
+        }
+
+        .contact-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* BOTÓN DE WHATSAPP (.btn-contact):
+          Diseñado específicamente para dispositivos móviles. Ocupa todo el ancho (width: 100%), 
+          tiene un tamaño ideal para el dedo (padding) y utiliza el color verde oficial de WhatsApp.
+        */
+        .btn-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Separación entre el icono/emoji y el texto */
+            background-color: #25d366; /* Verde oficial de WhatsApp */
+            color: #ffffff;
+            text-decoration: none; /* Quita el subrayado automático de los enlaces */
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s; /* Transición suave para los efectos visuales */
+            width: 100%;
+        }
+
+        /* EFECTO AL PRESIONAR (Celulares): Se reduce un poquito (98%) simulando un botón físico real */
+        .btn-contact:active {
+            transform: scale(0.98);
+        }
+
+        /* MEDIA QUERY (@media): 
+          Estas reglas solo se aplican si la pantalla es de una computadora o tableta (mínimo 768 píxeles).
+          Aquí añadimos el efecto 'hover' (pasar el cursor por encima) que no existe en celulares.
+        */
+        @media (min-width: 768px) {
+            .btn-contact:hover {
+                transform: translateY(-2px); /* El botón sube ligeramente */
+                box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); /* Se añade una sombra verde brillante */
+            }
+        }
+
+        /* ANIMACIONES (@keyframes):
+          'fadeIn' hace que la tarjeta aparezca suavemente desde abajo al cargar la pantalla.
+          'float' hace que la taza de café se mueva de arriba a abajo sutilmente para capturar la atención.
+        */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="icon-container">☕</div>
+        
+        <p class="cafe-name">KAVANA COFFE</p>
+        
+        <h1>¡Muchas gracias por su compra!</h1>
+        <p class="thanks-message">Su visita nos alegra el día. Esperamos que disfrute cada sorbo y regrese muy pronto.</p>
+        
+        <div class="contact-section">
+            <p class="contact-title">¿Tiene alguna duda o sugerencia?</p>
+            
+            <a href="https://wa.me/52271205165?text=Hola,%20esto%20es%20una%20prueba." target="_blank" class="btn-contact">
+                💬 Contactar por WhatsApp
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
