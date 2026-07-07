@@ -27,11 +27,12 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
-            min-height: 100vh;
+            height: 100vh; /* Forzamos a que mida exactamente el alto de la pantalla, ni un píxel más */
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 30px 20px; /* Margen ideal para el marco flotante en móviles */
+            padding: 15px; /* Reducido un poco para que juegue limpio con pantallas cortas */
+            overflow: hidden; /* BLOQUEA por completo el movimiento tanto vertical como horizontal */
         }
 
         /* LA TARJETA CENTRAL: 
