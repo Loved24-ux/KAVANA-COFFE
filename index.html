@@ -10,15 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* VARIABLES CSS ADAPTADAS A LA MARCA:
-           Extraídas directamente de la paleta de colores de tus imágenes.
-        */
         :root {
-            --bg-color: #931a1a;        /* El color rojo vino/guinda del fondo exterior */
-            --card-bg: #ffffff;         /* Fondo blanco de la tarjeta central con esquinas redondeadas */
-            --primary-color: #111111;   /* Negro puro para el texto de expectación y botón principal */
+            --bg-color: #931a1a;        /* Rojo vino/guinda corporativo de Kavana */
+            --card-bg: #ffffff;         /* Fondo blanco de la tarjeta */
+            --primary-color: #111111;   /* Negro para el botón */
             --text-main: #000000;       
-            --text-muted: #333333;      
         }
 
         * {
@@ -27,78 +23,72 @@
             padding: 0;
         }
 
+        /* EL CUERPO: Centra la tarjeta y asegura que el fondo guinda se vea arriba y abajo */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px; /* Reducido para dar más margen vertical en pantallas chicas */
+            padding: 40px 20px; /* Espacio arriba y abajo para que la tarjeta flote en el fondo rojo */
         }
 
-        /* TARJETA CONTENEDORA ADAPTADA:
-           Cambiamos a un flujo con 'gap' fijo para controlar exactamente el aire entre elementos
-           y evitar que se dispersen a lo largo de la pantalla.
+        /* LA TARJETA CENTRAL: 
+           Quitamos cualquier propiedad elástica. 'height: auto' hace que se adapte al contenido.
         */
         .container {
             background: var(--card-bg);
             width: 100%;
-            max-width: 420px; /* Un poco más estrecho para estilizar en móviles */
-            padding: 30px 25px; /* Reducimos el padding vertical de 45px a 30px */
-            border-radius: 45px; /* Ajustado proporcionalmente al nuevo tamaño */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); 
+            max-width: 430px; /* Ancho ideal idéntico al flyer original */
+            padding: 35px 25px;
+            border-radius: 55px; /* Bordes altamente redondeados tal como la imagen objetivo */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); 
             text-align: center;
             animation: fadeIn 0.6s ease-out;
+            
+            /* Caja de contenido unificada */
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px; /* 🔥 LA CLAVE: Une todos los elementos con una separación fija de 20px */
         }
 
-        /* LOGO PRINCIPAL:
-           Reducimos su tamaño máximo en móvil para que no empuje el resto de los componentes.
-        */
+        /* LOGO PRINCIPAL: Más grande y con menos margen inferior */
         .brand-logo {
-            width: 85%; /* No ocupa todo el ancho, dejando aire elegante a los lados */
-            max-width: 240px;
+            width: 90%;
+            max-width: 340px;
             height: auto;
-            margin-bottom: 5px;
+            margin-bottom: -10px; /* Ajuste sutil para pegar el logo a la ilustración */
         }
 
-        /* ILUSTRACIÓN COMING SOON:
-           Se escala de forma más compacta para equilibrar el peso visual central.
+        /* ILUSTRACIÓN COMING SOON: 
+           Incrementamos su tamaño para que domine el centro del diseño, igual que el flyer original.
         */
         .coming-soon-img {
-            width: 70%;
-            max-width: 180px;
+            width: 85%;
+            max-width: 310px;
             height: auto;
-            margin-bottom: 5px;
+            margin-bottom: 25px;
         }
 
-        /* FRASE DE EXPECTATIVA:
-           Reducimos los márgenes exteriores innecesarios ya que el contenedor maneja el gap.
-        */
+        /* FRASE DE EXPECTATIVA */
         .appointment-text {
-            font-size: 0.95rem; /* Un pelín más pequeña para mejorar legibilidad en pantallas compactas */
-            font-weight: 600; /* Un poco más de peso para que resalte */
+            font-size: 0.95rem;
+            font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--text-main);
             line-height: 1.6;
-            margin: 0; /* Eliminamos el margin-bottom de 30px que causaba desfase */
+            margin-bottom: 25px;
             text-decoration: underline;
-            text-underline-offset: 4px;
+            text-underline-offset: 5px;
         }
 
-        /* SECCIÓN DE CONTACTO:
-           Se acopla de forma natural al cierre de la tarjeta.
-        */
+        /* SECCIÓN DEL BOTÓN */
         .contact-section {
             width: 100%;
-            border-top: 1px solid #f5f5f5;
-            padding-top: 15px; /* Espaciado interno superior más compacto */
+            border-top: 1px solid #f0f0f0;
+            padding-top: 20px;
         }
 
         .btn-contact {
@@ -109,12 +99,12 @@
             background-color: var(--primary-color);
             color: #ffffff;
             text-decoration: none;
-            padding: 14px 20px;
+            padding: 15px 20px;
             border-radius: 14px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             letter-spacing: 0.5px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
             width: 100%;
         }
 
@@ -125,7 +115,7 @@
         @media (min-width: 768px) {
             .btn-contact:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             }
         }
 
