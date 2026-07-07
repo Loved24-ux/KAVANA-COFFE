@@ -23,7 +23,7 @@
             padding: 0;
         }
 
-        /* EL CUERPO: Centra la tarjeta y asegura que el fondo guinda se vea arriba y abajo */
+        /* EL CUERPO: Centra la tarjeta y asegura la visibilidad del fondo guinda arriba y abajo */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
@@ -31,44 +31,44 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px; /* Espacio arriba y abajo para que la tarjeta flote en el fondo rojo */
+            padding: 30px 20px; /* Margen ideal para el marco flotante en móviles */
         }
 
         /* LA TARJETA CENTRAL: 
-           Quitamos cualquier propiedad elástica. 'height: auto' hace que se adapte al contenido.
+           Removidos los excesos. El uso de Flexbox con un gap controlado evita cualquier dispersión.
         */
         .container {
             background: var(--card-bg);
             width: 100%;
-            max-width: 430px; /* Ancho ideal idéntico al flyer original */
-            padding: 35px 25px;
-            border-radius: 55px; /* Bordes altamente redondeados tal como la imagen objetivo */
+            max-width: 420px; /* Ancho estilizado calcado al flyer original */
+            padding: 40px 30px;
+            border-radius: 55px; /* Bordes altamente redondeados idénticos a la imagen objetivo */
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); 
             text-align: center;
             animation: fadeIn 0.6s ease-out;
             
-            /* Caja de contenido unificada */
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 25px; /* Mantiene una separación constante y limpia entre todos los elementos */
         }
 
-        /* LOGO PRINCIPAL: Más grande y con menos margen inferior */
+        /* LOGO PRINCIPAL: 
+           Ahora que está recortado, un ancho del 95% lo hace lucir imponente en la parte superior.
+        */
         .brand-logo {
-            width: 90%;
+            width: 95%;
             max-width: 340px;
             height: auto;
-            margin-bottom: -10px; /* Ajuste sutil para pegar el logo a la ilustración */
         }
 
         /* ILUSTRACIÓN COMING SOON: 
-           Incrementamos su tamaño para que domine el centro del diseño, igual que el flyer original.
+           Ajustado al 80% para mantener el perfecto equilibrio de escala central.
         */
         .coming-soon-img {
-            width: 85%;
-            max-width: 310px;
+            width: 80%;
+            max-width: 280px;
             height: auto;
-            margin-bottom: 25px;
         }
 
         /* FRASE DE EXPECTATIVA */
@@ -79,7 +79,6 @@
             text-transform: uppercase;
             color: var(--text-main);
             line-height: 1.6;
-            margin-bottom: 25px;
             text-decoration: underline;
             text-underline-offset: 5px;
         }
@@ -88,7 +87,7 @@
         .contact-section {
             width: 100%;
             border-top: 1px solid #f0f0f0;
-            padding-top: 20px;
+            padding-top: 5px; /* Espaciado balanceado combinado con el gap */
         }
 
         .btn-contact {
@@ -104,7 +103,7 @@
             font-weight: 600;
             font-size: 0.95rem;
             letter-spacing: 0.5px;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
             width: 100%;
         }
 
@@ -115,7 +114,7 @@
         @media (min-width: 768px) {
             .btn-contact:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
             }
         }
 
