@@ -64,17 +64,10 @@
             margin-bottom: 5px; /* Mantiene la ligera separación solicitada */
         }
 
-        .coming-soon-img {
-            width: 70%; /* Ajustado ligeramente para balancear la altura total con el tercer botón */
-            max-width: 240px;
-            height: auto;
-        }
-
         .appointment-text {
             font-size: 0.95rem;
             font-weight: 600;
             letter-spacing: 1.5px;
-            text-transform: uppercase;
             color: var(--text-main);
             line-height: 1.5;
             text-decoration: underline;
@@ -112,13 +105,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
             text-decoration: none;
             padding: 12px 20px;
             border-radius: 14px;
             font-family: 'Inter', sans-serif;
             transition: transform 0.2s, box-shadow 0.2s;
             width: 100%;
+            -webkit-tap-highlight-color: transparent; /* Remueve parpadeo azul en móviles al presionar */
         }
 
         /* Botón Principal (Menú Digital) - Color corporativo destacado */
@@ -134,28 +127,13 @@
         .btn-secondary {
             background-color: var(--primary-color);
             color: #ffffff;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        /* Contenedor interno para organizar el emoji y los textos de las redes */
-        .btn-content {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            text-align: left;
-        }
-
-        .btn-icon {
-            font-size: 1.2rem;
-            margin-right: 12px;
-            flex-shrink: 0;
         }
 
         .btn-text-wrapper {
             display: flex;
             flex-direction: column;
             line-height: 1.3;
+            width: 100%;
         }
 
         .action-title {
@@ -193,40 +171,35 @@
         <img src="logo.jpeg" alt="Kavana Logo" class="brand-logo">
         
         <!-- Frase de expectativa -->
-        <p class="appointment-text">Intensiona tus mañanas con<br>cafe Kavana</p>
+        <p class="appointment-text">Intenciona tus mañanas con<br>cafe Kavana</p>
         
-        <!-- Información de ubicación y horario -->
+        <!-- Información de horario -->
         <div class="info-text">
             <p class="location">Horario de atención:</p>
             <p class="hours">8:30am - 5:00pm</p>
         </div>
         
-        <!-- Sección con la nueva estructura de 3 botones -->
+        <!-- Sección con la estructura de 3 botones -->
         <div class="contact-section">
             
-            <!-- 1. NUEVO BOTÓN: Menú Digital (Redirige a menu.html de forma visual) -->
+            <!-- 1. Botón Principal: Menú Digital -->
             <a href="menu.html" class="btn-kavana btn-menu">
                  Ver Menú Digital
             </a>
             
-            <!-- 2. BOTÓN MODIFICADO: WhatsApp con título y llamada a la acción -->
-            <a href="https://wa.me/522294501817?text=Hola,%20esto%20es%20una%20prueba." target="_blank" class="btn-kavana btn-secondary">
-                <div class="btn-content">
-                    <span class="btn-icon">💬</span>
-                    <div class="btn-text-wrapper">
-                        <span class="action-title">Contactar por WhatsApp</span>
-                        <span class="action-desc">Realiza tu pedido aquí</span>
-                    </div>
+            <!-- 2. Botón Secundario: WhatsApp -->
+            <a href="https://wa.me/522294501817?text=Hola%20KAVANA!%20Me%20gustaria%20hacer%20un%20pedido." target="_blank" class="btn-kavana btn-secondary">
+                <div class="btn-text-wrapper">
+                    <span class="action-title">Contactar por WhatsApp</span>
+                    <span class="action-desc">Realiza tu pedido aquí</span>
                 </div>
             </a>
             
-            <!-- 3. BOTÓN MODIFICADO: Instagram con título y llamada a la acción -->
+            <!-- 3. Botón Secundario: Instagram -->
             <a href="https://www.instagram.com/kavana_coffee?utm_source=qr&igsh=MXNjMGplNnpoeWc0cw==" target="_blank" class="btn-kavana btn-secondary">
-                <div class="btn-content">
-                    <div class="btn-text-wrapper">
-                        <span class="action-title">Síguenos en Instagram</span>
-                        <span class="action-desc">Conoce nuestras promociones</span>
-                    </div>
+                <div class="btn-text-wrapper">
+                    <span class="action-title">Síguenos en Instagram</span>
+                    <span class="action-desc">Conoce nuestras promociones</span>
                 </div>
             </a>
             
