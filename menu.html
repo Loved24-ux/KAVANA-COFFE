@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú - Kavana Coffee</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #931a1a;        /* Guinda Kavana */
+            --card-bg: #ffffff;         /* Fondo blanco */
+            --text-main: #000000;       
+            --text-muted: #555555;
+            --watermark-color: rgba(200, 130, 135, 0.25); /* Taza rosa del fondo */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* CONTENEDOR PRINCIPAL DEL MENÚ */
+        .menu-container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 800px; 
+            border-radius: 40px;
+            padding: 35px 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        /* LA MARCA DE AGUA (La taza rosa del fondo) */
+        .menu-container::before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, transparent 50%, var(--watermark-color) 52%, transparent 55%),
+                        radial-gradient(circle, transparent 40%, var(--watermark-color) 42%, transparent 45%);
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* BOTÓN DE REGRESAR */
+        .btn-back {
+            align-self: flex-start;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 5;
+        }
+
+        /* ENCABEZADO DEL MENÚ */
+        .menu-header {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .menu-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+
+        .menu-header p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* GRID PRINCIPAL PARA ALIMENTOS (DESAYUNOS Y POSTRES) */
+        .menu-grid-top {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+            z-index: 2;
+        }
+
+        /* SECCIÓN DE BEBIDAS UNIFICADA FULL WIDTH */
+        .drinks-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 2;
+            width: 100%;
+        }
+
+        /* TÍTULO DE BEBIDAS CENTRADO */
+        .category-title-centered {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 3px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        /* GRID INTERNO PARA LAS DOS COLUMNAS DE BEBIDAS */
+        .drinks-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .menu-grid-top {
+                grid-template-columns: 1fr 1fr; /* Desayunos y Postres lado a lado en PC */
+            }
+            .drinks-grid {
+                grid-template-columns: 1fr 1fr; /* Lista de bebidas dividida en 2 columnas en PC */
+                gap: 35px;
+            }
+        }
+
+        /* ESTRUCTURA DE CATEGORÍAS */
+        .menu-category {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .category-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 3px;
+            margin-bottom: 5px;
+        }
+
+        /* LISTA DE ELEMENTOS */
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .item-main-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+            gap: 10px;
+        }
+
+        .item-name {
+            text-align: left;
+        }
+
+        .item-price {
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .item-description {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: left;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-container">
+        
+        <!-- Botón para regresar a la tarjeta principal -->
+        <a href="index.html" class="btn-back">⬅ Volver</a>
+        
+        <div class="menu-header">
+            <h1>Menú Digital</h1>
+            <p>KAVANA COFFEE</p>
+        </div>
+
+        <!-- PARTE SUPERIOR: ALIMENTOS -->
+        <div class="menu-grid-top">
+            
+            <!-- CATEGORÍA: DESAYUNOS -->
+            <div class="menu-category">
+                <h2 class="category-title">Desayunos</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-main-row"><span class="item-name">Baguette Sencillo</span><span class="item-price">$80</span></div>
+                        <span class="item-description">(Pan Baguette, Jamón de Pavo, Queso Manchego, Lechuga, Tomate y Mayonesa)</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-main-row"><span class="item-name">Baguette Con Jamón Cerrano</span><span class="item-price">$48</span></div>
+                        <span class="item-description">(Pan Baguette, Jamón Cerrano, Queso Manchego, Lechuga, Tomate y Mayonesa)</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-main-row"><span class="item-name">Cuernito</span><span class="item-price">$60</span></div>
+                        <span class="item-description">(Pan cuernito, Jamón de Pavo, Queso Manchego, Lechuga, Tomate y Mayonesa)</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-main-row"><span class="item-name">Salad Croissant</span><span class="item-price">$62</span></div>
+                        <span class="item-description">(Croissant, Jamón de Pavo, Queso Manchego, Lechuga, Tomate y Mayonesa)</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-main-row"><span class="item-name">Sandwich</span><span class="item-price">$48</span></div>
+                        <span class="item-description">(Pan de Sandwich, Jamón de Pavo, Queso Manchego, Legucha, Tomate, Mayonesa y Bolsa De papas pequeñas)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORÍA: POSTRES -->
+            <div class="menu-category">
+                <h2 class="category-title">Postres</h2>
+                <div class="menu-items">
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Reb. Torta de Elote</span><span class="item-price">$75</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Reb. Pastel de Chocolate</span><span class="item-price">$70</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Reb. Chocoflan</span><span class="item-price">$55</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Cookie Traditional</span><span class="item-price">$25</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Galletas Varias</span><span class="item-price">$13</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Pan Dulce del Día</span><span class="item-price">$23</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Nutella Croissant</span><span class="item-price">$</span></div></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PARTE INFERIOR: BEBIDAS UNIFICADAS -->
+        <div class="drinks-section">
+            <h2 class="category-title-centered">Bebidas</h2>
+            
+            <div class="drinks-grid">
+                <!-- Columna de Bebidas 1 -->
+                <div class="menu-items">
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Espresso</span><span class="item-price">$40</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Espresso double</span><span class="item-price">$43</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Espresso cortado</span><span class="item-price">$48</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Hot Americano / Iced Americano</span><span class="item-price">$53</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Hot Capuccino / Iced Capuccino</span><span class="item-price">$60</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Hot Latte / Iced Latte</span><span class="item-price">$65</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Hot Lechero / Iced Lechero</span><span class="item-price">$66</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Espresso Frappe</span><span class="item-price">$80</span></div></div>
+                </div>
+                
+                <!-- Columna de Bebidas 2 (Se alinea lado a lado automáticamente en PC) -->
+                <div class="menu-items">
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Vainilla Caramel Hot Capuccino</span><span class="item-price">$78</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Vainilla Caramel Ice Capuccino</span><span class="item-price">$82</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Vainilla Caramel Hot Latte</span><span class="item-price">$80</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Vainilla Caramel Ice Latte</span><span class="item-price">$84</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Vainilla Caramel Frappe</span><span class="item-price">$86</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Mokaccino / Iced Mokaccino</span><span class="item-price">$75 / $78</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Hot Latte Moka / Ice Latte Moka</span><span class="item-price">$79 / $82</span></div></div>
+                    <div class="menu-item"><div class="item-main-row"><span class="item-name">Moka Frappe</span><span class="item-price">$84</span></div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
